@@ -2,20 +2,34 @@ package com.fastcampus.javaallinone.project3.mycontact.Service;
 
 import com.fastcampus.javaallinone.project3.mycontact.Domain.Person;
 import com.fastcampus.javaallinone.project3.mycontact.Repository.PersonRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
     public List<Person> getPeopleExcludeBlocks(){
-        List<Person> people = personRepository.findAll();
+        return personRepository.findByBlockIsNull();
+    }
 
-        return people.stream().filter(person -> person.getBlock() == null).collect(Collectors.toList());        //block이 null인 값만 리턴
+    public List<Person> getPeopleByName(String name){
+        return personRepository.findByName(name);
+    }
+
+    @Transactional(readOnly = true)
+    public Person getPerson(Long id){
+        Person person = personRepository.findById(id).get();
+
+        log.info("person : {}",person);
+
+        return person;
     }
 }

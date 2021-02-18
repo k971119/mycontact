@@ -48,4 +48,23 @@ class PersonRepositoryTest {
         System.out.println(map);
         System.out.println(map.get(person2));
     }
+
+    @Test
+    void findByBloodType(){
+        givenPerson("martin",10,"A");
+        givenPerson("david",9,"B");
+        givenPerson("dennis",8,"O");
+        givenPerson("sophia",7,"AB");
+        givenPerson("benny",6,"A");
+        givenPerson("john",5,"A");
+
+        List<Person> result = personRepository.findByBloodType("A");
+
+        result.forEach(System.out::println);
+    }
+
+    private void givenPerson(String name, int age, String bloodType){
+        Person person = new Person(name, age, bloodType);
+        personRepository.save(person);
+    }
 }
