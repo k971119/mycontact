@@ -26,10 +26,11 @@ public class PersonService {
 
     @Transactional(readOnly = true)
     public Person getPerson(Long id){
-        Person person = personRepository.findById(id).get();
+        return personRepository.findById(id).orElse(null);          //id검색후 값이없다면 null 리턴
+    }
 
-        log.info("person : {}",person);
-
-        return person;
+    @Transactional
+    public void put(Person person) {
+        personRepository.save(person);
     }
 }

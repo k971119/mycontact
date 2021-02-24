@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @NoArgsConstructor
@@ -13,18 +15,23 @@ import javax.validation.Valid;
 @Data
 public class Person {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NonNull
+    @NotEmpty
+    @Column(nullable = false)
     private String name;
 
     @NonNull
+    @Min(1)
     private int age;
 
     private String hobby;
 
     @NonNull
+    @NotEmpty
+    @Column(nullable = false)
     private String bloodType;
 
     private String address;
