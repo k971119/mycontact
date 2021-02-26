@@ -1,5 +1,6 @@
 package com.fastcampus.javaallinone.project3.mycontact.Controller;
 
+import com.fastcampus.javaallinone.project3.mycontact.Controller.dto.PersonDto;
 import com.fastcampus.javaallinone.project3.mycontact.Domain.Person;
 import com.fastcampus.javaallinone.project3.mycontact.Repository.PersonRepository;
 import com.fastcampus.javaallinone.project3.mycontact.Service.PersonService;
@@ -29,5 +30,19 @@ public class PersonController {
         personService.put(person);
         
         log.info("person -> {}",personRepository.findAll());
+    }
+
+    @PutMapping(value = "/{id}")
+    public void modifyPerson(@PathVariable Long id,@RequestBody PersonDto personDto){
+        personService.modify(id,personDto);
+
+        log.info("{}",personRepository.findAll());
+    }
+
+    @PatchMapping(value = "/{id}")
+    public void modifyPerson(@PathVariable Long id, String name){
+        personService.modify(id, name);
+
+        log.info("{}",personRepository.findAll());
     }
 }
