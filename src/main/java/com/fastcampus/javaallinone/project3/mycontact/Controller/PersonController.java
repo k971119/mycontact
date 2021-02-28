@@ -45,4 +45,12 @@ public class PersonController {
 
         log.info("{}",personRepository.findAll());
     }
+
+    @DeleteMapping("/{id}")
+    public void deletePerson(@PathVariable Long id){
+        personService.delete(id);
+
+        log.info("{}",personRepository.findAll());
+        log.info("person deleted : {}",personRepository.findPeopleDeleted());
+    }
 }
