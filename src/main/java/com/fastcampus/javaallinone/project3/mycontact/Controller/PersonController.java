@@ -26,31 +26,22 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)     //해당정보가 생성된걸 명확하게 리턴하는 상태값
-    public void postPerson(@RequestBody Person person){          //default Requestparam
-        personService.put(person);
-        
-        log.info("person -> {}",personRepository.findAll());
+    public void postPerson(@RequestBody PersonDto personDto){          //default Requestparam
+        personService.put(personDto);
     }
 
     @PutMapping(value = "/{id}")
     public void modifyPerson(@PathVariable Long id,@RequestBody PersonDto personDto){
         personService.modify(id,personDto);
-
-        log.info("{}",personRepository.findAll());
     }
 
     @PatchMapping(value = "/{id}")
     public void modifyPerson(@PathVariable Long id, String name){
         personService.modify(id, name);
-
-        log.info("{}",personRepository.findAll());
     }
 
     @DeleteMapping("/{id}")
     public void deletePerson(@PathVariable Long id){
         personService.delete(id);
-
-        log.info("{}",personRepository.findAll());
-        log.info("person deleted : {}",personRepository.findPeopleDeleted());
     }
 }

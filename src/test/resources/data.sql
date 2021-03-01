@@ -1,12 +1,8 @@
-
-INSERT INTO PERSON(id,name,blood_type, year_of_birthday, month_of_birthday, day_of_birthday,job) VALUES(1,'martin','A',1991,8,15,'programmer');
-INSERT INTO PERSON(id,name,blood_type, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(2,'david','B',1992,7,21);
-INSERT INTO PERSON(id,name,blood_type, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(3,'dennis','O',1993,10,15);
-INSERT INTO PERSON(id,name,blood_type, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(4,'sophia','AB',1994,8,31);
-INSERT INTO PERSON(id,name,blood_type, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(5,'benny','A',1995,10,24);
-
-INSERT INTO BLOCK(ID,NAME) VALUES(1,'dennis');
-INSERT INTO BLOCK(ID,NAME) VALUES(2,'sophia');
-
-UPDATE PERSON SET BLOCK_ID = 1 WHERE ID = 3;
-UPDATE PERSON SET BLOCK_ID = 2 WHERE ID = 4;
+INSERT INTO PERSON(id,name, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(1,'martin',1991,8,15);
+INSERT INTO PERSON(id,name, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(2,'david',1992,7,21);
+INSERT INTO PERSON(id,name, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(3,'dennis',1993,10,15);
+INSERT INTO PERSON(id,name, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(4,'sophia',1994,8,31);
+INSERT INTO PERSON(id,name, year_of_birthday, month_of_birthday, day_of_birthday) VALUES(5,'benny',1995,10,24);
+INSERT INTO PERSON(id,name, year_of_birthday, month_of_birthday, day_of_birthday,job,hobby,phone_number,address)
+VALUES(6,'tony',1991,7,10,'officer','reading','010-2222-5555','seoul');
+INSERT INTO PERSON(id, name, deleted) values(7,'andrew','true');
